@@ -4,9 +4,11 @@ import {Link} from 'react-router-dom';
 
 function NavBar() {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="primary" variant="dark" expand="lg">
             <Container>
-                <Navbar.Brand href="/"> Bad Bank</Navbar.Brand>
+                <Navbar.Brand href="/"> 
+                    <img src="./bank 2.png" height="32px"/>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">

@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// Add bootstrap:
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// Add bootstrap theme SpaceLab from bootswatch:
+import "bootswatch/dist/spacelab/bootstrap.min.css";
+// By adding a bootswatch theme, I don't need to add the other bootstrap headers (at least for now...):
+// import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 // Put any other imports below so that CSS from your components takes precedence over default styles.
 import './index.css';
 

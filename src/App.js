@@ -22,6 +22,7 @@ import CreateAccount from './createaccount';
 import About from './about';
 import Products from './products';
 import NavBar from './navbar';
+import Footer from './footer';
 
 import './App.css';
 
@@ -30,7 +31,11 @@ import './App.css';
 function App() {
   return (
       <div className="App">
-        <h1>Welcome to Bad Bank</h1>
+        <h1> 
+          <img src="./bank 9.png" height="64px" alt="Bank Logo Left"/>  
+          Welcome to Bad Bank 
+          <img src="./bank 9.png" height="64px" alt="Bank Logo Right"/> 
+        </h1>
         <BrowserRouter>
         {/* Add the navigation bar */}
         <NavBar />
@@ -53,6 +58,7 @@ function App() {
           </Routes>
         </UserContext.Provider>
         </BrowserRouter>
+        <Footer />
       </div>
   );
 }

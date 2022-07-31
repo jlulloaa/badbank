@@ -10,7 +10,7 @@ function Home() {
             header="Bad Bank Landing Page"
             title="Welcome to Bad Bank"
             text="You can use this bank"
-            body={(<img src="./bank.png" className="img-fluid" alt="Responsive Image"/>)}
+            body={(<img src="./bank 2.png" className="img-fluid" alt="Responsive Site"/>)}
          />
         // <div>
         //     <h3> Hello, {JSON.stringify(ctx.users[0].name)}
