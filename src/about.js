@@ -1,18 +1,17 @@
 import {Card} from './context';
-const author = {
-    name: 'Jose L. Ulloa',
-    url: 'https://jlulloaa.github.io',
-}
+const thisYear = new Date().getFullYear();
+
+const about = "Bad Bank is a web application developed with React and styled with Bootstrap, through Bootswatch theme's Spacelab.";
 
 function About() {
     return (
         <Card 
             bgcolor="primary"
             txtcolor="white"
-            header="Bad Bank Web Application"
-            title="About"
-            text="Bad Bank is a web application developed with React and styled with Bootstrap, through the Bootswatch theme Spacelab"
-            body =  {(<a href="https://jlulloaa.github.io" target="_blank">&copy; Jose L. Ulloa, 2022</a>)}
+            header="ABOUT"
+            title={(<a href="https://github.com/jlulloaa/badbank" target="_blank" rel="noreferrer">Bad Bank</a>)}
+            text={about}
+            body =  {(<a href="https://jlulloaa.github.io" target="_blank" rel="noreferrer">&copy; {thisYear} Jose L. Ulloa </a>)}
          />
     );
 }

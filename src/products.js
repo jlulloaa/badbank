@@ -1,4 +1,4 @@
-import {useCtx} from './context';
+import {useCtx, Card} from './context';
 
 function Products() {
     const ctx = useCtx();

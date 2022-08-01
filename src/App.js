@@ -32,9 +32,9 @@ function App() {
   return (
       <div className="App">
         <h1> 
-          <img src="./bank 9.png" height="64px" alt="Bank Logo Left"/>  
+          <img src="./bank 2.png" height="64px" alt="Bank Logo Left"/>  
           Welcome to Bad Bank 
-          <img src="./bank 9.png" height="64px" alt="Bank Logo Right"/> 
+          <img src="./bank 2.png" height="64px" alt="Bank Logo Right"/> 
         </h1>
         <BrowserRouter>
         {/* Add the navigation bar */}

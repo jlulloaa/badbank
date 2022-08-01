@@ -28,7 +28,7 @@ function Card(props) {
   function classes(){
     const bg = props.bgcolor ? ' bg-' + props.bgcolor : ' ';
     const txt = props.txtcolor ? ' text-' + props.txtcolor : ' text-white';
-    return 'card mb-3 ' + bg + txt;
+    return 'card mx-auto mb-3 ' + bg + txt;
   }
 
   return (

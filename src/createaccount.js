@@ -38,10 +38,10 @@ function CreateAccount() {
         <Card 
             bgcolor="primary"
             txtcolor="white"
-            header="Create Account"
+            header="CREATE ACCOUNT"
             status = {status}
             title="Welcome to Bad Bank"
-            text="You can use this bank"
+            text="Create an account to start enjoying the benefits of Bad Bank"
             body={show ? (
                 <form>
                     Name<br/>

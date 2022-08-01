@@ -1,3 +1,5 @@
+import {Card} from './context';
+
 function Balance() {
     return (
         <div>
