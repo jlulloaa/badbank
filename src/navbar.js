@@ -29,7 +29,8 @@ function NavBar() {
         offset: {'top': 10, 'left': 10},
         border: true,
         bkgrndColor: "green",
-        txtColor: "white"
+        txtColor: "white",
+        delayHide: 10
     }
 
     return (
@@ -77,7 +78,7 @@ function NavBar() {
             <ReactTooltip id="productsTip" place={tooltipFormat.place} type={tooltipFormat.type} effect={tooltipFormat.effect} offset={tooltipFormat.offset} border={tooltipFormat.border} backgroundColor={tooltipFormat.bkgrndColor} textColor={tooltipFormat.txtColor}>
                 Check our products
             </ReactTooltip>
-            <ReactTooltip id="aboutTip" place={tooltipFormat.place} type={tooltipFormat.type} effect={tooltipFormat.effect} offset={tooltipFormat.offset} border={tooltipFormat.border} backgroundColor={tooltipFormat.bkgrndColor} textColor={tooltipFormat.txtColor}>
+            <ReactTooltip id="aboutTip" place={tooltipFormat.place} type={tooltipFormat.type} effect={tooltipFormat.effect} offset={tooltipFormat.offset} border={tooltipFormat.border} backgroundColor={tooltipFormat.bkgrndColor} textColor={tooltipFormat.txtColor} delayHide={tooltipFormat.delayHide}>
                 The small print and information about this application
             </ReactTooltip>
         </Navbar>
