@@ -14,7 +14,7 @@ function Home() {
             title="Welcome to Bad Bank"
             text="Add two buttons below the logo: Login and Create account. If not possible (or too complex, click in the logo to log in your account"
             body={(<div><img src="./bank 2.png" className="img-fluid" alt="Responsive Site"/>
-            <Link data-tip data-for="loginTip" to="/login" className="btn btn-success disabled">Login</Link>
+            <Link data-tip data-for="loginTip" to="/login" className="btn btn-success">Login</Link>
             <Link data-tip data-for="createAccTip" to="/createAccount" className="btn btn-warning">Sign up</Link>
             </div>)}
          />
