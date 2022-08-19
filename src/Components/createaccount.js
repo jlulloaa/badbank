@@ -1,14 +1,19 @@
 import React from 'react';
-import { useCtx, Card } from './context';
+import Card from './card';
+import { useCtx } from './context';
 import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
+import { ToolTips } from './utils';
 
 
 function CreateAccount() {
-
+   
     const [show, setShow] = React.useState(true);
-    const ctx = useCtx();
+    const [btndisabled, setBtnDisabled] = React.useState(true);
 
+    // const { users, setContext } = useCtx();
+    const users = useCtx();
+    
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -16,35 +21,51 @@ function CreateAccount() {
             name: '',
         },
         onSubmit: (values, {resetForm}) => {
+            let now = new Date();
             alert('Account created successfully', null, 2);
-            values.balance=0;
-            ctx.users.push(values);
+            users.unshift({name: values.name, 
+                        email: values.email, 
+                        password: values.password,
+                        withdraw: '',
+                        deposit: '',
+                        date: now.toLocaleDateString('en-GB'),
+                        time: now.toTimeString(),
+                        balance: 1000});
             setShow(false);
             resetForm({values:''});
-            console.log(ctx.users);
+            // setContext(users);
+            setBtnDisabled(true);
         },
         validate,
     });
     
     function validate (values) {
         let errors = {};
+        let disableBtn = false;
 
         if (!values.email) {
             errors.email = 'Field required';
+            disableBtn = true;
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
             errors.email = 'Email should be in the correct format';
+            disableBtn = true;
         };
       
         if (!values.name) {
             errors.name = 'Field required';
+            disableBtn = true;
         };
 
         if (!values.password) {
           errors.password = 'Field required';
+          disableBtn = true;
         } else if (values.password.length < 8) {
             errors.password = 'Password length must be 8 characters or longer';
+            disableBtn = true;
         };
         
+        setBtnDisabled(disableBtn);
+
         return errors;
     };
     
@@ -52,9 +73,9 @@ function CreateAccount() {
         <Card 
             bgcolor="primary"
             txtcolor="white"
-            header="CREATE ACCOUNT"
-            title="Welcome to Bad Bank"
-            text="Create an account to start enjoying the benefits of Bad Bank"
+            header="BadBank"
+            title="CREATE A NEW ACCOUNT"
+            text={show ? <>Create an account to start enjoying the benefits of Bad Bank</>:<>Create another account <br/> or <br/> Click <span className="badge bg-success">Login</span> to access your existing account</>}
             body={
                 <form onSubmit={formik.handleSubmit}>
                     Name<br/>
@@ -63,11 +84,11 @@ function CreateAccount() {
                     <input type="input" className="form-control" id="email" placeholder="Enter email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur}/> {formik.touched.email && formik.errors.email ? (<div id="emailError" style={{color:'red'}}>{formik.errors.email}</div>) : null}<br/>
                     Password<br/>
                     <input type="password" autoComplete="current-password" className="form-control" id="password" placeholder="Enter password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>{formik.touched.password && formik.errors.password ? (<div id="pswError" style={{color: 'red'}}>{formik.errors.password}</div>) : null}<br/>
-                    <button type="submit" className="btn btn-warning"> {show ? "Create Account":"Add another account"}</button>
-                    {show ? null:<Link data-tip data-for="loginTip" to="/login" className="btn btn-success">Login</Link>}
+                    <button data-tip data-for="newAccTip" type="submit" className="btn btn-warning" disabled={btndisabled}> {show ? "Create Account":"Add another account"}</button>
+                    {show ? null:<Link data-tip data-for="existAccTip" to="/login" className="btn btn-success">Login</Link>}
+                    <ToolTips></ToolTips>
                 </form>
             }
-
         />
     );
 }

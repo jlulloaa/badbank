@@ -1,5 +1,5 @@
-import {Card} from './context';
-import {Link} from 'react-router-dom';
+import Card from './card';
+// import {Link} from 'react-router-dom';
 const thisYear = new Date().getFullYear();
 
 const title = <a href="https://github.com/jlulloaa/badbank" target="_blank" rel="noreferrer">
