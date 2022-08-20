@@ -12,7 +12,7 @@ function Home() {
             header="BadBank"
             title="Welcome to BadBank"
             text="A friendly bank with an excellent website, but poor services"
-            body={(<div><img src="./bank 2.png" className="img-fluid" alt="Responsive Site"/>
+            body={(<div><img src="./bank_logo.png" className="img-fluid" alt="Responsive Site"/>
             <span data-tip data-for="noAccountTip">
             <Link to="/login" className="btn btn-success disabled" >Login</Link>
             </span>

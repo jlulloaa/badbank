@@ -40,9 +40,9 @@ function App() {
     <Container className="App">
       <Router>
           <h1> 
-            <img className="img-fluid float-left" src="./bank 2.png"  width="8%" alt="Bank Logo Left"/>  
+            <img className="img-fluid float-left" src="./bank_logo.png"  width="8%" alt="Bank Logo Left"/>  
               <span> Welcome to BadBank </span>
-            <img className="img-fluid float-right" src="./bank 2.png" width="8%" alt="Bank Logo Right"/> 
+            <img className="img-fluid float-right" src="./bank_logo.png" width="8%" alt="Bank Logo Right"/> 
           </h1>
         {/* Add the navigation bar */}
         <NavBar />

@@ -27,7 +27,7 @@ function NavBar() {
         <Navbar collapseOnSelect bg="primary" variant="dark" expand="lg">
             <Container>
                 <Navbar.Brand data-tip data-for="homeTip" href="/"> 
-                    <img src="./bank 2.png" height="32px" alt="Bank Logo"/>
+                    <img src="./bank_logo.png" height="32px" alt="Bank Logo"/>
                 </Navbar.Brand>
                 <LanguageChange></LanguageChange>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
