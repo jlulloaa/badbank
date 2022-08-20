@@ -5,13 +5,12 @@ import { useCtx } from './context';
 
 function Withdraw() {
 
-    const [withdrawValue, setWithdrawValue] = React.useState("");
     // const { users, setContext } = useCtx();
     const users = useCtx();
-    const [balance, setBalance] = React.useState(users.at(-1).balance);
+    const [balance, setBalance] = React.useState(users.at(-1).history.at(-1).balance);
     const [btndisabled, setBtnDisabled] = React.useState(true);
+    const [withdrawValue, setWithdrawValue] = React.useState("");
     const [withdrawal, setWithdrawal] = React.useState(null);
-    console.log(users);
  
     const onChangeHandler = (e)=>{
         e.preventDefault();
@@ -28,25 +27,25 @@ function Withdraw() {
                 alert('Not enough money to withdraw', null, 2);
                 setBtnDisabled(true);
             }
-            console.log(e.target.value);
         } else {
             setBtnDisabled(true);
         }
       }
 
     const onClickHandler = () => {
-         // replicate the last element to populate it with the new transaction:
-         users.push({...users.at(-1)});
-        // This new functionality allows to get the last element (ES2022):
-        users.at(-1).withdraw = withdrawal;
-        users.at(-1).deposit = '';
-        users.at(-1).balance -= withdrawal;
-        // setContext(users);
-        setBalance(users.at(-1).balance);
-        // Just after updating the balance, we timestamp the transaction
+        //  replicate the last element to populate it with the new transaction:
+        //  users.push({...users.at(-1)});
         let now = new Date();
-        users.at(-1).date = now.toLocaleDateString('en-GB');
-        users.at(-1).time = now.toTimeString();
+        // This new functionality allows to get the last element (ES2022):
+        users.at(-1).history.push({
+            deposit: '',
+            withdraw: withdrawal,
+            balance: balance - withdrawal,
+            date: now.toLocaleDateString('en-GB'),
+            time: now.toTimeString()
+        });
+        // setContext(users);
+        setBalance(users.at(-1).history.at(-1).balance);
         setWithdrawal(null);
         setWithdrawValue("");
         setBtnDisabled(true);
@@ -58,7 +57,7 @@ function Withdraw() {
             txtcolor="white"
             header="BadBank"
             title="WITHDRAWAL"
-            text={<>Hello, {users[0].name}! Here you can Withdraw funds from your account</>}
+            text={<>Hello{(users.at(-1).name === '') ? <>! </>: <>, {users.at(-1).name}! </>}Here you can withdraw funds from your account</>}
             body = {(
                 <div>
                     <label className="form-label mt-4">CURRENT BALANCE</label>
@@ -70,7 +69,7 @@ function Withdraw() {
                         <span className="input-group-text">$</span>
                         <input data-tip data-for="withdrawAmountTip" type="number" className="form-control" id="withdrawField" aria-label="Amount (to the nearest dollar)" value={withdrawValue} onChange={onChangeHandler}/>
                         <span className="input-group-text">.00</span>
-                        <button data-tip data-for="withdrawClickTip" type="button" className="btn btn-warning" id="withdrawClick" disabled={btndisabled}
+                        <button data-tip data-for="withdrawClickTip" type="button" className="btn btn-success" id="withdrawClick" disabled={btndisabled}
                         onClick={onClickHandler}>WITHDRAW</button>
                     </div>
                     <ToolTips></ToolTips>

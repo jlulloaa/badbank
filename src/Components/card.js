@@ -1,17 +1,6 @@
 import React from 'react';
 
 // Add card template component to use across the whole application:
-/* template for the card component:
-<div class="card">
-  <div class="card-header">
-    Featured
-  </div>
-  <div class="card-body">
-    <h5 class="card-title"> Special title treatment </h5>
-    <p class="card-text"> With supporting text below as a natural lead-in to additional content.</p>
-  </div>
-</div>
-*/
 function Card(props) {
     function classes(){
       const bg = props.bgcolor ? ' bg-' + props.bgcolor : ' ';

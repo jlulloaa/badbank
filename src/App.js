@@ -24,6 +24,8 @@ import Products from './Components/products';
 import NavBar from './Components/navbar';
 import Footer from './Components/footer';
 
+// import { LanguageChange } from './Components/utils';
+
 import './styles/App.css';
 import { Container } from 'react-bootstrap';
 
@@ -31,39 +33,38 @@ import { Container } from 'react-bootstrap';
 // and this article: https://reactrouter.com/docs/en/v6/getting-started/concepts
 function App() {
 
-  // Initialises the context variable that will define the user details:
-  const initUser = [{name: '', email: '', password: '', deposit: '', withdraw: '', balance:10}];
+  // Initialises the context variables that will define the user details:
+  const initUser = [{name: '', email: '', password: '', history: [{deposit: '', withdraw: '', balance:0}]}];
 
   return (
     <Container className="App">
-    <Router>
-      <h1> 
-            <img src="./bank 2.png" height="64px" alt="Bank Logo Left"/>  
-            Welcome to Bad Bank 
-            <img src="./bank 2.png" height="64px" alt="Bank Logo Right"/> 
+      <Router>
+          <h1> 
+            <img className="img-fluid float-left" src="./bank 2.png"  width="8%" alt="Bank Logo Left"/>  
+              <span> Welcome to BadBank </span>
+            <img className="img-fluid float-right" src="./bank 2.png" width="8%" alt="Bank Logo Right"/> 
           </h1>
-            {/* Add the navigation bar */}
-            <NavBar />
-            <hr/>
-              {/* By using Provider, we are making the value available to all children and grandchildren */}
-              {/* As learned from this blog (https://dmitripavlutin.com/react-context-and-usecontext/), all components that'll consume the context, have to be wrapped inside the Provider */}
-              {/* TODO: value can be read from a json file, so later on would be better to create a function to specifically get them... */}
-              {/* <UserContext.Provider value={userCtx}> */}
-              <UserContext.Provider value = { initUser }>
-                <Routes>
-                  <Route path="/" element={<Home/>} />
-                  <Route path="/createAccount" element={<CreateAccount/>} />
-                  <Route path="/login" element={<Login/>} />
-                  <Route path="/deposit" element={<Deposit/>} />
-                  <Route path="/withdraw" element={<Withdraw/>} />
-                  <Route path="/allData" element={<AllData/>} />
-                  <Route path="/about" element= {<About/>} />
-                  <Route path="/products" element={<Products/>} />
-                </Routes>
-              </UserContext.Provider>
-              <Footer />
+        {/* Add the navigation bar */}
+        <NavBar />
+        <hr/>
+        {/* By using Provider, we are making the value available to all children and grandchildren */}
+        {/* As learned from this blog (https://dmitripavlutin.com/react-context-and-usecontext/), all components that'll consume the context, have to be wrapped inside the Provider */}
+        {/* TODO: value can be read from a json file, so later on would be better to create a function to specifically get them... */}
+        <UserContext.Provider value = { initUser }>
+          <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/createAccount" element={<CreateAccount/>} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/deposit" element={<Deposit/>} />
+            <Route path="/withdraw" element={<Withdraw/>} />
+            <Route path="/allData" element={<AllData/>} />
+            <Route path="/about" element= {<About/>} />
+            <Route path="/products" element={<Products/>} />
+          </Routes>
+        </UserContext.Provider>
+        <Footer />
     </Router>
-    </Container>
+  </Container>
   );
 }
 

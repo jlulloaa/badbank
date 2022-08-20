@@ -11,7 +11,6 @@ function CreateAccount() {
     const [show, setShow] = React.useState(true);
     const [btndisabled, setBtnDisabled] = React.useState(true);
 
-    // const { users, setContext } = useCtx();
     const users = useCtx();
     
     const formik = useFormik({
@@ -23,14 +22,15 @@ function CreateAccount() {
         onSubmit: (values, {resetForm}) => {
             let now = new Date();
             alert('Account created successfully', null, 2);
-            users.unshift({name: values.name, 
+            users.push({name: values.name, 
                         email: values.email, 
                         password: values.password,
-                        withdraw: '',
-                        deposit: '',
-                        date: now.toLocaleDateString('en-GB'),
-                        time: now.toTimeString(),
-                        balance: 1000});
+                        history: [{ withdraw: '',
+                                    deposit: '',
+                                    date: now.toLocaleDateString('en-GB'),
+                                    time: now.toTimeString(),
+                                    balance: 1000}]
+            });
             setShow(false);
             resetForm({values:''});
             // setContext(users);
@@ -56,6 +56,11 @@ function CreateAccount() {
             disableBtn = true;
         };
 
+        // if (!values.username) {
+        //     errors.username = 'Field required';
+        //     disableBtn = true;
+        // };
+
         if (!values.password) {
           errors.password = 'Field required';
           disableBtn = true;
@@ -75,16 +80,19 @@ function CreateAccount() {
             txtcolor="white"
             header="BadBank"
             title="CREATE A NEW ACCOUNT"
-            text={show ? <>Create an account to start enjoying the benefits of Bad Bank</>:<>Create another account <br/> or <br/> Click <span className="badge bg-success">Login</span> to access your existing account</>}
+            text={show ? <>Register here to start enjoying the benefits of BadBank</>:<>Click <span className="badge bg-success">Add another account</span> <br/> or <br/> <span className="badge bg-success">Login</span> to access your existing account</>}
             body={
                 <form onSubmit={formik.handleSubmit}>
                     Name<br/>
                     <input type="input" autoComplete="username" className="form-control" id="name" placeholder="Enter name" value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur}/> {formik.touched.name && formik.errors.name ? (<div id="nameError" style={{color:'red'}}>{formik.errors.name}</div>) : null}<br/>
+                    {/* Username<br/>
+                    <input type="input" autoComplete="username" className="form-control" id="username" placeholder="Enter username" value={formik.values.username} onChange={formik.handleChange} onBlur={formik.handleBlur}/> {formik.touched.username && formik.errors.username ? (<div id="nameError" style={{color:'red'}}>{formik.errors.username}</div>) : null}<br/> */}
+                    
                     Email address<br/>
                     <input type="input" className="form-control" id="email" placeholder="Enter email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur}/> {formik.touched.email && formik.errors.email ? (<div id="emailError" style={{color:'red'}}>{formik.errors.email}</div>) : null}<br/>
                     Password<br/>
                     <input type="password" autoComplete="current-password" className="form-control" id="password" placeholder="Enter password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>{formik.touched.password && formik.errors.password ? (<div id="pswError" style={{color: 'red'}}>{formik.errors.password}</div>) : null}<br/>
-                    <button data-tip data-for="newAccTip" type="submit" className="btn btn-warning" disabled={btndisabled}> {show ? "Create Account":"Add another account"}</button>
+                    <button data-tip data-for="newAccTip" type="submit" className="btn btn-success" disabled={btndisabled}> {show ? "Create Account":"Add another account"}</button>
                     {show ? null:<Link data-tip data-for="existAccTip" to="/login" className="btn btn-success">Login</Link>}
                     <ToolTips></ToolTips>
                 </form>

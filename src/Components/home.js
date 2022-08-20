@@ -10,10 +10,12 @@ function Home() {
             bgcolor="primary"
             txtcolor="white"
             header="BadBank"
-            title="Welcome to Bad Bank"
+            title="Welcome to BadBank"
             text="A friendly bank with an excellent website, but poor services"
             body={(<div><img src="./bank 2.png" className="img-fluid" alt="Responsive Site"/>
-            <Link data-tip data-for="existAccTip" to="/login" className="btn btn-success disabled" >Login</Link>
+            <span data-tip data-for="noAccountTip">
+            <Link to="/login" className="btn btn-success disabled" >Login</Link>
+            </span>
             <Link data-tip data-for="createAccTip" to="/createAccount" className="btn btn-warning">Sign up</Link>
             <ToolTips></ToolTips>
             </div>)}

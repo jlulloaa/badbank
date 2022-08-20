@@ -1,9 +1,11 @@
-import { useRef } from "react";
+// import { useRef } from "react";
 
 // How about using react-bootstrap??
 import {Container, Nav, Navbar} from 'react-bootstrap';
 // In order to style the navigation bar, is better to use NavLink instead of Link (see https://v5.reactrouter.com/web/api/NavLink)
 import {NavLink} from 'react-router-dom';
+
+import { LanguageChange } from './utils';
 
 // The 'exact' keyword in the Link to Home ensures that only returns the route if the path is an exact match to the current URL. This is particularly important in the Home path because is only defined by "/", which is also present in all the other paths. See https://staceycarrillo.medium.com/highlight-the-active-navigation-bar-link-using-navlink-in-react-d44f5d8bf997 for details 
 
@@ -14,13 +16,12 @@ import {NavLink} from 'react-router-dom';
 
 function NavBar() {
 
-    const navButton = useRef(null);
-    const linksContainerRef = useRef(null);
- 
-    function collapseNav() {
-        navButton.current.classList.add("collapsed");
-        linksContainerRef.current.classList.remove("show");
-    }
+    // const navButton = useRef(null);
+    // const linksContainerRef = useRef(null);
+    // function collapseNav() {
+    //     navButton.current.classList.add("collapsed");
+    //     linksContainerRef.current.classList.remove("show");
+    // }
 
     return (
         <Navbar collapseOnSelect bg="primary" variant="dark" expand="lg">
@@ -28,6 +29,7 @@ function NavBar() {
                 <Navbar.Brand data-tip data-for="homeTip" href="/"> 
                     <img src="./bank 2.png" height="32px" alt="Bank Logo"/>
                 </Navbar.Brand>
+                <LanguageChange></LanguageChange>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav variant="pills" className="ms-auto">
@@ -35,10 +37,8 @@ function NavBar() {
                         <NavLink data-tip data-for="existAccTip"  className="nav-link" to="/login"> Login</NavLink>
                         <NavLink data-tip data-for="depositTip" className="nav-link" to="/deposit"> Deposit</NavLink>
                         <NavLink data-tip data-for="withdrawTip" className="nav-link" to="/withdraw"> Withdraw</NavLink>
-                        {/* <NavLink data-tip data-for="balanceTip" onClick={collapseNav} className="nav-link" to="/balance"> Balance</NavLink> */}
                         <NavLink data-tip data-for="allDataTip" className="nav-link" to="/allData"> All data</NavLink>
-                        {/* <NavLink data-tip data-for="productsTip" onClick={collapseNav} className="nav-link" to="/products"> Products</NavLink> */}
-                        <NavLink data-tip data-for="aboutTip" className="nav-link" to="/about"> About</NavLink>
+                        <NavLink data-tip data-for="aboutTip" className="nav-link" to="/about"> About Us</NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

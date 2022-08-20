@@ -12,20 +12,19 @@ function Login() {
     const users = useCtx();
     const [userLogin, setUserLogin] = React.useState(null);
     const [btndisabled, setBtnDisabled] = React.useState(true);
-    console.log(users);
+
     const formik = useFormik({
         initialValues: {
-            email: users[0].email,
-            password: users[0].password,
+            // Take the last element as the reference
+            email: users.at(-1).email,
+            password: users.at(-1).password,
         },
+
         onSubmit: (values, {resetForm}) => {
             alert('Login successfully', null, 2);
             setUserLogin(true);
-            console.log(userLogin);
             resetForm({values:''});
             setBtnDisabled(true);
-            // how about updating users to contain only the user logged data?
-            users.pop();
         },
         validate,
     });
@@ -41,9 +40,19 @@ function Login() {
             errors.email = 'Email should be in the correct format';
             disableBtn = true;
             // Adding another branch, check whether email is in users
-        } else if (values.email !== users[0].email) {
-            errors.email = 'Email is not registered, please create an account first'
-            disableBtn = true;
+        } else {
+            // Check whether the email is in the users list (create a simple check function)
+            var findEmailPos = users.findIndex(item => item.email === values.email);
+            console.log(findEmailPos);
+            if (findEmailPos < 0 ) {
+                errors.email = 'Email is not registered, please create an account first'
+                disableBtn = true;
+            } else {
+                // Swap the last element by the one selected by the email:
+                console.log(users[findEmailPos]);
+                [users[findEmailPos], users[users.length-1]] = [users[users.length-1], users[findEmailPos]];
+                console.log(users);
+            }
         }; 
       
         if (!values.password) {
@@ -74,7 +83,7 @@ function Login() {
                     <input type="input" className="form-control" id="email" placeholder="Enter email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur} autoComplete="off"/> {formik.touched.email && formik.errors.email ? (<div id="emailError" style={{color:'red'}}>{formik.errors.email}</div>) : null}<br/>
                     Password<br/>
                     <input type="password" autoComplete="current-password" className="form-control" id="password" placeholder="Enter password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>{formik.touched.password && formik.errors.password ? (<div id="pswError" style={{color: 'red'}}autoComplete="off">{formik.errors.password}</div>) : null}<br/>
-                    <button data-tip data-for="existAccTip" type="submit" className="btn btn-warning" disabled={btndisabled}> Login</button>
+                    <button data-tip data-for="existAccTip" type="submit" className="btn btn-success" disabled={btndisabled}> Login</button>
                     <ToolTips></ToolTips>
                 </form> )
             }
