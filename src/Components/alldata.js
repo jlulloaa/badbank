@@ -12,7 +12,6 @@ function AllData() {
     const now = new Date();
     const download = (!(users.at(-1).name === '')); // TRUE => There is an account, FALSE => no account was created
     const username = download ? users.at(-1).name : '';
-    console.log(download);
 
     const exportData = {
         filename: username + '_' + now.toLocaleDateString('en-GB'),
