@@ -84,14 +84,14 @@ function CreateAccount() {
             body={
                 <form onSubmit={formik.handleSubmit}>
                     Name<br/>
-                    <input type="input" autoComplete="username" className="form-control" id="name" placeholder="Enter name" value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur}/> {formik.touched.name && formik.errors.name ? (<div id="nameError" style={{color:'red'}}>{formik.errors.name}</div>) : null}<br/>
+                    <input type="input" autoComplete="username" className="form-control" id="name" placeholder="Enter your name" value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur}/> {formik.touched.name && formik.errors.name ? (<div id="nameError" style={{color:'red'}}>{formik.errors.name}</div>) : null}<br/>
                     {/* Username<br/>
                     <input type="input" autoComplete="username" className="form-control" id="username" placeholder="Enter username" value={formik.values.username} onChange={formik.handleChange} onBlur={formik.handleBlur}/> {formik.touched.username && formik.errors.username ? (<div id="nameError" style={{color:'red'}}>{formik.errors.username}</div>) : null}<br/> */}
                     
                     Email address<br/>
-                    <input type="input" className="form-control" id="email" placeholder="Enter email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur}/> {formik.touched.email && formik.errors.email ? (<div id="emailError" style={{color:'red'}}>{formik.errors.email}</div>) : null}<br/>
+                    <input type="input" className="form-control" id="email" placeholder="Enter your email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur}/> {formik.touched.email && formik.errors.email ? (<div id="emailError" style={{color:'red'}}>{formik.errors.email}</div>) : null}<br/>
                     Password<br/>
-                    <input type="password" autoComplete="current-password" className="form-control" id="password" placeholder="Enter password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>{formik.touched.password && formik.errors.password ? (<div id="pswError" style={{color: 'red'}}>{formik.errors.password}</div>) : null}<br/>
+                    <input type="password" autoComplete="current-password" className="form-control" id="password" placeholder="Enter a password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>{formik.touched.password && formik.errors.password ? (<div id="pswError" style={{color: 'red'}}>{formik.errors.password}</div>) : null}<br/>
                     <button data-tip data-for="newAccTip" type="submit" className="btn btn-success" disabled={btndisabled}> {show ? "Create Account":"Add another account"}</button>
                     {show ? null:<Link data-tip data-for="existAccTip" to="/login" className="btn btn-success">Login</Link>}
                     <ToolTips></ToolTips>
