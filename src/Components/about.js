@@ -9,7 +9,7 @@ const title = <a href="https://github.com/jlulloaa/badbank" target="_blank" rel=
     </a>;
 
 const about = <> 
-    Bad Bank is a web application developed with <a href="https://reactjs.org" target="_blank" rel="noreferrer" >
+    Bad Bank is single-page web application (SPA) developed with <a href="https://reactjs.org" target="_blank" rel="noreferrer" >
         <span className="badge bg-primary" data-bs-toggle="tooltip" data-bs-placement="left" title="https://reactjs.org"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/270px-React-icon.svg.png" alt='React Icon' height="16"></img> React
         </span> 
     </a> and styled with <a href="https://getbootstrap.com/" target="_blank" rel="noreferrer">
@@ -22,7 +22,7 @@ const about = <>
         <span className="badge rounded-pill bg-light" data-bs-toggle="tooltip" data-bs-placement="left" title="https://bootswatch.com/spacelab">
         Spacelab
         </span>
-    </a>. 
+    </a>. BadBank emulates a banking application where a validated user can deposit and wihtdraw funds from the account, keeping track of the remaining balance and history of transactions.
     </>;
 
 const body = <>

@@ -76,7 +76,7 @@ function Login() {
             title="ACCESS YOUR ACCOUNT"
             text="Access your restricted area to manage your account"
             body={userLogin ? (
-                <Navigate to="/deposit"></Navigate>
+                <Navigate to="/deposit" ></Navigate>
                 ) : (
                 <form onSubmit={formik.handleSubmit}>
                     Email address<br/>

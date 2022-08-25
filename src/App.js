@@ -52,14 +52,14 @@ function App() {
         {/* TODO: value can be read from a json file, so later on would be better to create a function to specifically get them... */}
         <UserContext.Provider value = { initUser }>
           <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/createAccount" element={<CreateAccount/>} />
-            <Route path="/login" element={<Login/>} />
-            <Route path="/deposit" element={<Deposit/>} />
-            <Route path="/withdraw" element={<Withdraw/>} />
-            <Route path="/allData" element={<AllData/>} />
-            <Route path="/about" element= {<About/>} />
-            <Route path="/products" element={<Products/>} />
+            <Route path="/" exact element={<Home/>} />
+            <Route path="/createAccount" exact element={<CreateAccount/>} />
+            <Route path="/login" exact element={<Login/>} />
+            <Route path="/deposit" exact element={<Deposit/>} />
+            <Route path="/withdraw" exact element={<Withdraw/>} />
+            <Route path="/allData" exact element={<AllData/>} />
+            <Route path="/about" exact element= {<About/>} />
+            <Route path="/products" exact element={<Products/>} />
           </Routes>
         </UserContext.Provider>
         <Footer />
